@@ -21,3 +21,37 @@ const movieDB = {
     ]
 };
 
+const promoAds = document.querySelectorAll('.promo__adv img'),
+      posterBG = document.querySelector('.promo__bg'),
+      promoGenre = posterBG.querySelector('.promo__genre'),
+      movieList = document.querySelector('.promo__interactive-list');
+
+promoAds.forEach(item => {
+    item.remove();
+});
+
+// promoAds.forEach(function (item){
+//     item.remove();
+// });
+
+//todo task # 2
+promoGenre.textContent = 'драма';
+
+//todo task # 3 bg img change
+posterBG.style.backgroundImage = 'url("img/bg.jpg")';
+
+//todo task # 4 change movie titles with js file data sort it first
+movieList.innerHTML = "";
+
+movieDB.movies.sort();
+
+// console.log(posterBG.innerHTML);
+
+//todo Task #5 add number of films i
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+    <li class="promo__interactive-item"> ${i + 1} ${film}
+        <div class="delete"></div>
+    </li>                    
+    `;
+});
