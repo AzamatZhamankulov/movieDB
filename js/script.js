@@ -70,94 +70,94 @@
 //todo "Добавляем любимый фильм"
 //todo 5) Фильмы должны быть отсортированы по алфавиту
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const movieDB = {
-//         movies: [
-//             "Логан",
-//             "Лига справедливости",
-//             "Ла-ла лэнд",
-//             "Одержимость",
-//             "Скотт Пилигрим против..."
-//         ]
-//     };
+document.addEventListener('DOMContentLoaded', () => {
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
     
-//     const promoAds = document.querySelectorAll('.promo__adv img'),
-//           posterBG = document.querySelector('.promo__bg'),
-//           promoGenre = posterBG.querySelector('.promo__genre'),
-//           movieList = document.querySelector('.promo__interactive-list'),
-//           addForm = document.querySelector('form.add'),
-//           addInput = document.querySelector('.adding__input'),
-//           checkbox = document.querySelector('[type="checkbox"]');
+    const promoAds = document.querySelectorAll('.promo__adv img'),
+          posterBG = document.querySelector('.promo__bg'),
+          promoGenre = posterBG.querySelector('.promo__genre'),
+          movieList = document.querySelector('.promo__interactive-list'),
+          addForm = document.querySelector('form.add'),
+          addInput = document.querySelector('.adding__input'),
+          checkbox = document.querySelector('[type="checkbox"]');
 
-//     addForm.addEventListener('submit', (event) => {
-//         event.preventDefault();
+    addForm.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-//         let newFilm = addInput.value;
-//         const favorite = checkbox.checked;
+        let newFilm = addInput.value;
+        const favorite = checkbox.checked;
 
-//         if (newFilm) {
+        if (newFilm) {
 
-//             if (newFilm.length > 21) {
-//                 newFilm = `${newFilm.substring(0, 22)}...`;
-//             }
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0, 22)}...`;
+            }
 
-//             if (favorite) {
-//                 console.log("Добавляем любимый фильм"); 
-//             }
-//             movieDB.movies.push(newFilm);
-//             sortArr(movieDB.movies);
+            if (favorite) {
+                console.log("Добавляем любимый фильм"); 
+            }
+            movieDB.movies.push(newFilm);
+            sortArr(movieDB.movies);
     
-//             creatMovieList(movieDB.movies, movieList);
-//         }
+            creatMovieList(movieDB.movies, movieList);
+        }
 
-//         event.target.reset();
-//     });
+        event.target.reset();
+    });
     
-//     //! function for delete ads
-//     const deleteAds = (arr) => {
-//         arr.forEach(item => {
-//             item.remove();
-//         });
-//     };
+    //! function for delete ads
+    const deleteAds = (arr) => {
+        arr.forEach(item => {
+            item.remove();
+        });
+    };
     
-//     //! function for makeing some changes
-//     const makeChanges = () => {
-//         promoGenre.textContent = 'драма';
+    //! function for makeing some changes
+    const makeChanges = () => {
+        promoGenre.textContent = 'драма';
 
-//         posterBG.style.backgroundImage = 'url("img/bg.jpg")';
-//     };
+        posterBG.style.backgroundImage = 'url("img/bg.jpg")';
+    };
 
-//     //! function to sort the array
-//     const sortArr = (arr) => {
-//         arr.sort();
-//     };
+    //! function to sort the array
+    const sortArr = (arr) => {
+        arr.sort();
+    };
 
-//     //! fucntion to create new list of films with button delete and numbers
-//     function creatMovieList(films, parent) {
-//         parent.innerHTML = "";
-//         sortArr(movieDB.movies);       
+    //! fucntion to create new list of films with button delete and numbers
+    function creatMovieList(films, parent) {
+        parent.innerHTML = "";
+        sortArr(movieDB.movies);       
     
-//         films.forEach((film, i) => {
-//             parent.innerHTML += `
-//             <li class="promo__interactive-item"> ${i + 1} ${film}
-//             <div class="delete"></div>
-//             </li>
-//             `;
-//         });
+        films.forEach((film, i) => {
+            parent.innerHTML += `
+            <li class="promo__interactive-item"> ${i + 1} ${film}
+            <div class="delete"></div>
+            </li>
+            `;
+        });
 
-//         //! delete the film form list
-//         document.querySelectorAll('.delete').forEach((btn, i) => {
-//             btn.addEventListener('click', () => {
-//                 btn.parentElement.remove();
-//                 movieDB.movies.splice(i, 1);
-//                 //!recoursion to change numbers as well
-//                 creatMovieList(films, parent);
-//             });
-//         });
-//     }
+        //! delete the film form list
+        document.querySelectorAll('.delete').forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+                //!recoursion to change numbers as well
+                creatMovieList(films, parent);
+            });
+        });
+    }
 
-//     deleteAds(promoAds);
-//     makeChanges();
+    deleteAds(promoAds);
+    makeChanges();
 
-//     creatMovieList(movieDB.movies, movieList);
-// });
+    creatMovieList(movieDB.movies, movieList);
+});
